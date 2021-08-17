@@ -9,6 +9,7 @@ it loads the environment variable mentioned in the file to the current process.
 
 .Example
  Set-PsEnv
+ Set-PsEnv -Force
  
  .Example
  #.env file format
@@ -31,8 +32,9 @@ it loads the environment variable mentioned in the file to the current process.
 function Set-PsEnv {
     [CmdletBinding(SupportsShouldProcess = $true, ConfirmImpact = 'Low')]
     param()
-
-    if($Global:PreviousDir -eq (Get-Location).Path){
+   
+   
+    if($Global:PreviousDir -eq (Get-Location).Path || -Not $PSBoundParameters.ContainsKey('Force') ){
         Write-Verbose "Set-PsEnv:Skipping same dir"
         return
     } else {
