@@ -29,7 +29,7 @@ it loads the environment variable mentioned in the file to the current process.
      Set-PsEnv
  }
 #>
-function Set-PsEnv1 {
+function Set-PsEnv {
     [CmdletBinding(SupportsShouldProcess = $true, ConfirmImpact = 'Low')]
     param(
         [switch]$Force = $false
@@ -95,4 +95,4 @@ function Set-PsEnv1 {
     }
 }
 
-Export-ModuleMember -Function @('Set-PsEnv1')
+Export-ModuleMember -Function @('Set-PsEnv')
