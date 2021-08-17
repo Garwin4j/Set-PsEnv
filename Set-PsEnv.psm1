@@ -29,9 +29,11 @@ it loads the environment variable mentioned in the file to the current process.
      Set-PsEnv
  }
 #>
-function Set-PsEnv {
+function Set-PsEnv1 {
     [CmdletBinding(SupportsShouldProcess = $true, ConfirmImpact = 'Low')]
-    param()
+    param(
+        [switch]$Force = $false
+    )
    
    
     if($Global:PreviousDir -eq (Get-Location).Path || -Not $PSBoundParameters.ContainsKey('Force') ){
@@ -93,4 +95,4 @@ function Set-PsEnv {
     }
 }
 
-Export-ModuleMember -Function @('Set-PsEnv')
+Export-ModuleMember -Function @('Set-PsEnv1')
